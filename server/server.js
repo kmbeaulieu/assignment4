@@ -45,6 +45,15 @@ app.put('/lions/:id', function(req, res) {
   }
 });
 
+app.delete('/lions/:id', function(req,res){
+  //lion to delete
+  var lion = _.findIndex(lions, {id: req.params.id});
+  //take it out then put it back together
+  lions.splice(lion, 1);
+  res.json(req.lion);
+  
+});
+
 app.set('port', (process.env.PORT || 8080));
 
 app.listen(app.get('port'), function() {
